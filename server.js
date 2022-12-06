@@ -19,9 +19,7 @@ const sess = {
       db: sequelize
     })
   };
-  
-//   app.use(express.static("public"))
-   
+ 
   app.use(session(sess));
   
   app.use(express.json());
