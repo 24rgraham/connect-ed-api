@@ -34,15 +34,16 @@ router.post("/", async (req, res) => {
   try {
     const newProject = await Project.create({
       title: req.body.title,
-      gradeLvl: req.body.grade_lvl,
-      time: req.body.est_time,
+      image: req.body.image,
+      grade_lvl: req.body.grade_lvl,
+      est_time: req.body.est_time,
       curriculum: req.body.curriculum,
       subject: req.body.subject,
-      description: req.body.overview_desc,
+      overview_desc: req.body.overview_desc,
       directions: req.body.directions,
       materials: req.body.materials,
       resources: req.body.resources,
-      creatorId: req.session.userId,
+      UserId: req.session.UserId,
     });
     res.status(200).json(newProject);
   } catch (err) {
@@ -55,15 +56,16 @@ router.put("/:id", (req, res) => {
   Project.update(
     {
       title: req.body.title,
-      gradeLvl: req.body.grade_lvl,
-      time: req.body.est_time,
+      image: req.body.image,
+      grade_lvl: req.body.grade_lvl,
+      est_time: req.body.est_time,
       curriculum: req.body.curriculum,
       subject: req.body.subject,
-      description: req.body.overview_desc,
+      overview_desc: req.body.overview_desc,
       directions: req.body.directions,
       materials: req.body.materials,
       resources: req.body.resources,
-      creatorId: req.session.userId,
+      UserId: req.session.UserId,
     },
     {
       where: {
@@ -86,7 +88,7 @@ router.put("/:id", (req, res) => {
 // delete project by id
 router.delete("/:id", async (req, res) => {
   try {
-    const project = await project.destroy({
+    const project = await Project.destroy({
       where: {
         id: req.params.id,
       },
