@@ -4,6 +4,8 @@ const Status = require("./Status")
 const User = require("./User")
 const Subject = require("./Subject")
 const Curriculum = require("./Curriculum")
+const SubjectTag = require("./SubjectTag")
+const CurriculumTag = require("./CurriculumTag")
 
 User.hasMany(Project)
 Project.belongsTo(User)
@@ -36,4 +38,4 @@ Project.belongsToMany(Subject, {
     through:"SubjectTag"
 })
 
-module.exports = {User, Project, Comment, Subject, Curriculum }
+module.exports = {User, Project, Comment, Subject, Curriculum, Status, SubjectTag, CurriculumTag }

@@ -28,14 +28,6 @@ Project.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    curriculum: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    subject: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     overview_desc: {
       type: DataTypes.TEXT,
       allowNull: false,
