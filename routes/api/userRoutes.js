@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Project, Status } = require("../../models");
 const bcrypt = require("bcrypt");
 
 //get all users
@@ -11,10 +11,10 @@ router.get('/',(req,res)=>{
     })
   })
 
-  //get user by id
+  //get user and their projects by id
 router.get("/:id", (req, res) => {
     User.findByPk(req.params.id,{
-      include:[Post]
+      include:[Project]
     })
       .then((user) => {
         res.json(user);
@@ -28,9 +28,15 @@ router.get("/:id", (req, res) => {
 // create new user
 router.post('/', (req,res)=>{
     User.create({
-        username:req.body.username,
+        first_name:req.body.first_name,
+        last_name:req.body.last_name,
         email:req.body.email,
         password:req.body.password,
+        school:req.body.school,
+        city:req.body.city,
+        state:req.body.state,
+        language:req.body.language,
+        profile_picture:req.body.profile_picture,
     }).then(newUser=>{
         req.session.userId=newUser.id;
         req.session.loggedIn=true;
@@ -45,9 +51,15 @@ router.post('/', (req,res)=>{
 router.put('/:id',(req,res)=>{
     User.update(
         {
-            username:req.body.username,
+            first_name:req.body.first_name,
+            last_name:req.body.last_name,
             email:req.body.email,
             password:req.body.password,
+            school:req.body.school,
+            city:req.body.city,
+            state:req.body.state,
+            language:req.body.language,
+            profile_picture:req.body.profile_picture,
         },
         {
             where:{
@@ -69,7 +81,7 @@ router.put('/:id',(req,res)=>{
 router.post('/login',(req,res)=>{
     User.findOne({
         where:{
-            username:req.body.username
+            email:req.body.email
         }
     }).then(foundUser=>{
         if(!foundUser){
