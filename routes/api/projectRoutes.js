@@ -3,7 +3,9 @@ const { User, Project, Comment } = require("../../models");
 
 // get all projects
 router.get("/", (req, res) => {
-  Project.findAll({})
+  Project.findAll({
+    include: [Comment],
+  })
     .then((project) => {
       res.json(project);
     })
@@ -14,10 +16,13 @@ router.get("/", (req, res) => {
 
 // get one project by id
 router.get("/:id", (req, res) => {
-  Project.findByPk(req.params.id)
+  Project.findByPk(req.params.id, {
+    include: [Comment]
+  })
     .then((project) => {
       res.json(project);
     })
+
     .catch((err) => {
       console.log(err);
       res.status(500).json({ err: err });
@@ -95,7 +100,5 @@ router.delete("/:id", async (req, res) => {
     console.log(err);
   }
 });
-
-
 
 module.exports = router;
