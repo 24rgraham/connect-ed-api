@@ -1,5 +1,29 @@
 const router = require("express").Router();
-const { Comment } = require("../../models");
+const { User, Comment, Project } = require("../../models");
+
+// get all comments
+router.get("/", (req, res) => {
+    Comment.findAll()
+      .then((comment) => {
+        res.json(comment);
+      })
+      .catch((err) => {
+        res.status(500).json({ msg: "An error has occurred", err });
+      });
+  });
+  
+// get comment by id
+  router.get("/:id", (req, res) => {
+    Comment.findByPk(req.params.id)
+      .then((comment) => {
+        res.json(comment);
+      })
+  
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ err: err });
+      });
+  });
 
 // create comment
 router.post("/", async (req, res) => {
