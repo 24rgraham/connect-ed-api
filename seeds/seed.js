@@ -162,6 +162,11 @@ const statusData = [
     ProjectId: 1,
   },
   {
+    starred: true,
+    UserId: 3,
+    ProjectId: 2,
+  },
+  {
     completed: true,
     UserId: 2,
     ProjectId: 1,
