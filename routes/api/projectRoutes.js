@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const { User, Project, Comment } = require("../../models");
+const { User, Project, Comment, Curriculum, CurriculumTag, Subject, SubjectTag } = require("../../models");
 
 // get all projects
 router.get("/", (req, res) => {
   Project.findAll({
-    include: [Comment],
+    include: [Comment, { model: Curriculum, through: CurriculumTag }, { model: Subject, through: SubjectTag }],
   })
     .then((project) => {
       res.json(project);
@@ -31,6 +31,8 @@ router.get("/:id", (req, res) => {
 
 // create project
 router.post("/", async (req, res) => {
+  console.log('hi');
+  
   try {
     const newProject = await Project.create({
       title: req.body.title,
@@ -45,8 +47,12 @@ router.post("/", async (req, res) => {
       resources: req.body.resources,
       UserId: req.session.UserId,
     });
+    const subjects = await newProject.addSubjects(req.body.subjects)
+    const curriculums = await newProject.addCurriculums(req.body.curriculums)
     res.status(200).json(newProject);
   } catch (err) {
+    console.log(err);
+    
     res.status(400).json(err);
   }
 });
