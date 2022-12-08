@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { Project, Status } = require("../../models");
 
 //get associated projects by status
+//(these 4 routes could be combined into one using "/:status" and a switch statement but this also works)
 router.get('/in_progress', async (req, res) => {
     try {
         const projects = await Status.findAll({ where: { UserId: req.session.userId, in_progress: true }, include: [Project] });
@@ -37,5 +38,11 @@ router.get('/completed', async (req, res) => {
         console.log(err)
     }
 });
+
+//create new project status association
+
+//update project status association
+
+//delete project status association
 
 module.exports = router;
