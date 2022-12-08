@@ -9,8 +9,8 @@ const userData = [
     first_name: "John",
     last_name: "Cusack",
     school: "Roosevelt",
-    city: "Seattle",
-    state: "WA",
+    city: "Bethleham",
+    state: "PA",
     language: "English",
     profile_picture: null,
   },
@@ -43,7 +43,7 @@ const userData = [
 const projectData = [
   {
     title: "Build a table",
-    image: "https://www.placekitten.com/200/300",
+    image: "https://placekitten.com/300/200",
     grade_lvl: "8",
     est_time: 4,
     overview_desc: "blahdgak;lajnert",
@@ -54,14 +54,36 @@ const projectData = [
   },
   {
     title: "Paint a wall",
-    image: "https://www.placekitten.com/200/300",
-    grade_lvl: "8",
-    est_time: 4,
-    overview_desc: "blahdgak;lajnert",
+    image: "https://placekitten.com/300/200",
+    grade_lvl: "4",
+    est_time: 6,
+    overview_desc: "blahd gak;lajner  t",
     directions: "Step one: pick a wall-- Step two: start painting",
     materials: "ark njgae rjng;kaerjng naergregr aregaer aergrsd",
     resources: "ne w;lkr nwe5 vlkewn;r  nergre",
     UserId: 1,
+  },
+  {
+    title: "Count to 5",
+    image: "https://placekitten.com/300/200",
+    grade_lvl: "12",
+    est_time: 5,
+    overview_desc: "b  lahdg  ak;la   jnert",
+    directions: "Step 1: say 1.. Step 2: say 2.. Step 3: say 3.. Step 4: say 4.. Step 5: say 5.. Step 6: Party",
+    materials: "rev a;dkvjre nPINGAE",
+    resources: "new;SSlkrnwASDe5 vlkewn;r nergre",
+    UserId: 1,
+  },
+  {
+    title: "DO A BACKFLIP",
+    image: "https://placekitten.com/300/200",
+    grade_lvl: "1",
+    est_time: 1,
+    overview_desc: "I didnt realize caps lock was on when i typed the title",
+    directions: "Step one: do a backflip",
+    materials: "trampoline.",
+    resources: "ne w;lkr nwe5 vlkewn;r  nergre",
+    UserId: 3,
   },
 ]
 
@@ -128,6 +150,14 @@ const curriculumTagData = [
     CurriculumId: 4,
     ProjectId: 2,
   },
+  {
+    CurriculumId: 3,
+    ProjectId: 3,
+  },
+  {
+    CurriculumId: 1,
+    ProjectId: 4,
+  },
 ]
 
 const subjectTagData = [
@@ -142,6 +172,18 @@ const subjectTagData = [
   {
     SubjectId: 3,
     ProjectId: 2,
+  },
+  {
+    SubjectId: 10,
+    ProjectId: 3,
+  },
+  {
+    SubjectId: 7,
+    ProjectId: 4,
+  },
+  {
+    SubjectId: 2,
+    ProjectId: 3,
   },
 ]
 
