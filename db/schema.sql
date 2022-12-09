@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS connectED_db;
+
+CREATE DATABASE connectED_db;
