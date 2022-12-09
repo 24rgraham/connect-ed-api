@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 // get one project by id
 router.get("/:id", (req, res) => {
   Project.findByPk(req.params.id, {
-    include: [Comment]
+    include: [Comment, { model: Curriculum, through: CurriculumTag }, { model: Subject, through: SubjectTag }],
   })
     .then((project) => {
       res.json(project);
@@ -32,15 +32,13 @@ router.get("/:id", (req, res) => {
 // create project
 router.post("/", async (req, res) => {
   console.log('hi');
-  
+
   try {
     const newProject = await Project.create({
       title: req.body.title,
       image: req.body.image,
       grade_lvl: req.body.grade_lvl,
       est_time: req.body.est_time,
-      curriculum: req.body.curriculum,
-      subject: req.body.subject,
       overview_desc: req.body.overview_desc,
       directions: req.body.directions,
       materials: req.body.materials,
@@ -52,43 +50,52 @@ router.post("/", async (req, res) => {
     res.status(200).json(newProject);
   } catch (err) {
     console.log(err);
-    
+
     res.status(400).json(err);
   }
 });
 
-// update project by id
-router.put("/:id", (req, res) => {
-  Project.update(
-    {
+//update project by id
+router.put("/:id", async (req, res) => {
+  console.log('hi');
+
+  try {
+    const deleteSujects = await SubjectTag.destroy({
+      where: {
+        ProjectId: req.params.id,
+      },
+    });
+    const deleteCurriculums = await CurriculumTag.destroy({
+      where: {
+        ProjectId: req.params.id,
+      },
+    });
+    const updatedProject = await Project.update({
       title: req.body.title,
       image: req.body.image,
       grade_lvl: req.body.grade_lvl,
       est_time: req.body.est_time,
-      curriculum: req.body.curriculum,
-      subject: req.body.subject,
       overview_desc: req.body.overview_desc,
       directions: req.body.directions,
       materials: req.body.materials,
       resources: req.body.resources,
       UserId: req.session.UserId,
     },
-    {
-      where: {
-        id: req.params.id,
-      },
-    }
-  )
-    .then((updatedProject) => {
-      if (updatedProject[0] === 0) {
-        return res.status(404).json({ msg: "No project found by that id" });
+      {
+        where: {
+          id: req.params.id,
+        },
       }
-      res.json(updatedProject);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ err: err });
-    });
+    );
+    const actualUpdatedProject = await Project.findByPk(req.params.id)
+    const subjects = await actualUpdatedProject.addSubjects(req.body.subjects)
+    const curriculums = await actualUpdatedProject.addCurriculums(req.body.curriculums)
+    res.status(200).json(actualUpdatedProject);
+  } catch (err) {
+    console.log(err);
+
+    res.status(400).json(err);
+  }
 });
 
 // delete project by id
