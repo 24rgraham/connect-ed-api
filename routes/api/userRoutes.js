@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const { User, Project, Status } = require("../../models");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const tokenAuth = require("../../middleware/tokenAuth")
 
 //get all users
 router.get('/',(req,res)=>{
@@ -89,15 +91,41 @@ router.post('/login',(req,res)=>{
         }else if(!bcrypt.compareSync(req.body.password,foundUser.password)){
             return res.status(401).json({msg:'password incorrect!'})
         }else{
-            req.session.userId=foundUser.id;
-            req.session.loggedIn=true;
-            res.json(foundUser);
+            if (bcrypt.compareSync(req.body.password, foundUser.password)){
+                const token = jwt.sign({
+                    email: foundUser.email, 
+                    id:foundUser.id
+                },
+                process.env.JWT_SECRET
+                ,{
+                    expiresIn:"2h"
+                })
+                res.json({
+                    token:token, 
+                    user:foundUser
+                });
+                User.update({where:{id:foundUser.id}})
+            }else{
+                res.json("Incorrect Credentials")
+            }
+            // req.session.userId=foundUser.id;
+            // req.session.loggedIn=true;
+            // res.json(foundUser);
         }
     }).catch(err=>{
         console.log(err);
         res.status(500).json({err});
     })
-})
+});
+
+router.get("/verify", tokenAuth, (req,res)=> {
+    User.findByPk(req.user.id).then(foundUser=>{
+        res.json(foundUser)
+    }).catch(err=>{
+        console.log(err)
+        res.json({err: err,message:"Invalid Token"})
+    })
+});
 
 //logout user
 router.get('/logout', (req, res) => {
