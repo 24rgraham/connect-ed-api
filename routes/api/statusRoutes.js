@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Project, Status } = require("../../models");
+const jwt = require("jsonwebtoken")
 
 //get associated projects by status
 //(these 4 routes could be combined into one using "/:status" and a switch statement but this also works)
