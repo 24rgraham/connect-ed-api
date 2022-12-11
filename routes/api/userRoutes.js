@@ -4,15 +4,27 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const tokenAuth = require("../../middleware/tokenAuth")
 
+
+
 //get all users
-router.get('/',(req,res)=>{
+router.get('/',(req,res)=>{    
     User.findAll().then(userData=>{
         res.json(userData)
     }).catch(err=>{
         res.status(500).json({msg:"An error has occurred",err})
     })
   })
-
+router.get("/getuserbytoken", (req, res) => {
+    try {        
+        console.log('hi');
+        
+      const token = req.headers.authorization.split(" ")[1];
+      const userData = jwt.verify(token, process.env.JWT_SECRET);
+      res.json({ user: userData });
+    } catch (error) {
+      res.status(400).json({ user: false });
+    }
+  });
   //get user and their projects by id
 router.get("/:id", (req, res) => {
     User.findByPk(req.params.id,{
@@ -92,6 +104,8 @@ router.post('/login',(req,res)=>{
             return res.status(401).json({msg:'password incorrect!'})
         }else{
             if (bcrypt.compareSync(req.body.password, foundUser.password)){
+                // console.log(foundUser.email);
+                
                 const token = jwt.sign({
                     email: foundUser.email, 
                     id:foundUser.id
@@ -104,19 +118,38 @@ router.post('/login',(req,res)=>{
                     token:token, 
                     user:foundUser
                 });
-                User.update({where:{id:foundUser.id}})
+                //delete this (it was causing it to crash)
+                // User.update({where:{id:foundUser.id}})
             }else{
                 res.json("Incorrect Credentials")
             }
-            // req.session.userId=foundUser.id;
-            // req.session.loggedIn=true;
-            // res.json(foundUser);
         }
     }).catch(err=>{
         console.log(err);
         res.status(500).json({err});
     })
 });
+
+router.get('/hi',(req,res)=>{
+    console.log('hi');
+    
+    User.findAll().then(userData=>{
+        res.json(userData)
+    }).catch(err=>{
+        res.status(500).json({msg:"An error has occurred",err})
+    })
+  });
+
+router.get("/test", (req, res) => {
+    try {        
+      const token = req.headers.authorization.split(" ")[1];
+      const userData = jwt.verify(token, process.env.JWT_SECRET);
+      res.json({ user: userData });
+    } catch (error) {
+      res.status(400).json({ user: false });
+    }
+  });
+
 
 router.get("/verify", tokenAuth, (req,res)=> {
     User.findByPk(req.user.id).then(foundUser=>{
