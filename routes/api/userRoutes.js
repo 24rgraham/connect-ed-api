@@ -1,8 +1,10 @@
 const router = require("express").Router();
 const { User, Project, Status } = require("../../models");
 const bcrypt = require("bcrypt");
-const express = require("express");
 const jwt = require("jsonwebtoken");
+const tokenAuth = require("../../middleware/tokenAuth")
+
+
 
 //get all users
 router.get("/", (req, res) => {
@@ -107,36 +109,43 @@ router.get("/getuserfromtoken", (req, res) => {
 });
 
 // login user
-router.post("/login", (req, res) => {
-  User.findOne({
-    where: {
-      email: req.body.email,
-    },
-  })
-    .then((foundUser) => {
-      if (!foundUser) {
-        return res.status(401).json({ msg: "username incorrect!" });
-      } else if (!bcrypt.compareSync(req.body.password, foundUser.password)) {
-        return res.status(401).json({ msg: "password incorrect!" });
-      } else {
-        const token = jwt.sign({
-            id:foundUser.id,
-            email:foundUser.email,
-            username:foundUser.username
-        },process.env.JWT_SECRET,{
-            expiresIn:"24h"
-        })
-        return res.json({
-            token,
-            user:foundUser
-        })
-    }
+router.post('/login',(req,res)=>{
+    User.findOne({
+        where:{
+            email:req.body.email
+        }
+    }).then(foundUser=>{
+        if(!foundUser){
+            return res.status(401).json({msg:'username incorrect!'})
+        }else if(!bcrypt.compareSync(req.body.password,foundUser.password)){
+            return res.status(401).json({msg:'password incorrect!'})
+        }else{
+            if (bcrypt.compareSync(req.body.password, foundUser.password)){
+                // console.log(foundUser.email);
+                
+                const token = jwt.sign({
+                    email: foundUser.email, 
+                    id:foundUser.id
+                },
+                process.env.JWT_SECRET
+                ,{
+                    expiresIn:"2h"
+                })
+                res.json({
+                    token:token, 
+                    user:foundUser
+                });
+                //delete this (it was causing it to crash)
+                // User.update({where:{id:foundUser.id}})
+            }else{
+                res.json("Incorrect Credentials")
+            }
+        }
+    }).catch(err=>{
+        console.log(err);
+        res.status(500).json({err});
     })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ err });
-    });
-});
+})
 
 //logout user
 // router.get("/logout", (req, res) => {
