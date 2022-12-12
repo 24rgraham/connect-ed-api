@@ -6,7 +6,9 @@ const jwt = require("jsonwebtoken")
 //(these 4 routes could be combined into one using "/:status" and a switch statement but this also works)
 router.get('/in_progress', async (req, res) => {
     try {
-        const projects = await Status.findAll({ where: { UserId: req.session.userId, in_progress: true }, include: [Project] });
+        const token = req.headers.authorization.split(" ")[1];
+    const userData = jwt.verify(token, process.env.JWT_SECRET);
+        const projects = await Status.findAll({ where: { UserId: userData.id, in_progress: true }, include: [Project] });
         res.status(200).json(projects)
     } catch (err) {
         console.log(err)
@@ -15,7 +17,9 @@ router.get('/in_progress', async (req, res) => {
 
 router.get('/saved_for_later', async (req, res) => {
     try {
-        const projects = await Status.findAll({ where: { UserId: req.session.userId, saved_for_later: true }, include: [Project] });
+        const token = req.headers.authorization.split(" ")[1];
+    const userData = jwt.verify(token, process.env.JWT_SECRET);
+        const projects = await Status.findAll({ where: { UserId: userData.id, saved_for_later: true }, include: [Project] });
         res.status(200).json(projects)
     } catch (err) {
         console.log(err)
@@ -24,7 +28,9 @@ router.get('/saved_for_later', async (req, res) => {
 
 router.get('/starred', async (req, res) => {
     try {
-        const projects = await Status.findAll({ where: { UserId: req.session.userId, starred: true }, include: [Project] });
+        const token = req.headers.authorization.split(" ")[1];
+    const userData = jwt.verify(token, process.env.JWT_SECRET);
+        const projects = await Status.findAll({ where: { UserId: userData.id, starred: true }, include: [Project] });
         res.status(200).json(projects)
     } catch (err) {
         console.log(err)
@@ -33,7 +39,9 @@ router.get('/starred', async (req, res) => {
 
 router.get('/completed', async (req, res) => {
     try {
-        const projects = await Status.findAll({ where: { UserId: req.session.userId, completed: true }, include: [Project] });
+        const token = req.headers.authorization.split(" ")[1];
+    const userData = jwt.verify(token, process.env.JWT_SECRET);
+        const projects = await Status.findAll({ where: { UserId: userData.id, completed: true }, include: [Project] });
         res.status(200).json(projects)
     } catch (err) {
         console.log(err)
