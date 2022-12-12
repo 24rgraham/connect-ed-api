@@ -2,62 +2,59 @@ const router = require("express").Router();
 const { Project, Status } = require("../../models");
 const jwt = require("jsonwebtoken")
 
-
-//get all of a users projects
-router.get('/all', async (req, res) => {
-    try {
-        const token = req.headers.authorization.split(" ")[1];
-        const userData = jwt.verify(token, process.env.JWT_SECRET);
-        const projects = await Status.findAll({ where: { UserId: userData.id }, include: [Project] });
-        res.status(200).json(projects)
-    } catch (err) {
-        console.log(err)
-    }
-});
-
 //get associated projects by status
 //(these 4 routes could be combined into one using "/:status" and a switch statement but this also works)
-router.get('/in_progress', async (req, res) => {
-    try {
-        const token = req.headers.authorization.split(" ")[1];
-        const userData = jwt.verify(token, process.env.JWT_SECRET);
-        const projects = await Status.findAll({ where: { UserId: userData.id, in_progress: true }, include: [Project] });
-        res.status(200).json(projects)
-    } catch (err) {
-        console.log(err)
-    }
-});
-
-router.get('/saved_for_later', async (req, res) => {
-    try {
-        const token = req.headers.authorization.split(" ")[1];
-        const userData = jwt.verify(token, process.env.JWT_SECRET);
-        const projects = await Status.findAll({ where: { UserId: userData.id, saved_for_later: true }, include: [Project] });
-        res.status(200).json(projects)
-    } catch (err) {
-        console.log(err)
-    }
-});
-
-router.get('/starred', async (req, res) => {
-    try {
-        const token = req.headers.authorization.split(" ")[1];
-        const userData = jwt.verify(token, process.env.JWT_SECRET);
-        const projects = await Status.findAll({ where: { UserId: userData.id, starred: true }, include: [Project] });
-        res.status(200).json(projects)
-    } catch (err) {
-        console.log(err)
-    }
-});
-
-router.get('/completed', async (req, res) => {
-    try {
-        const token = req.headers.authorization.split(" ")[1];
-        const userData = jwt.verify(token, process.env.JWT_SECRET);
-        const projects = await Status.findAll({ where: { UserId: userData.id, completed: true }, include: [Project] });
-        res.status(200).json(projects)
-    } catch (err) {
-        console.log(err)
+router.get('/:status', async (req, res) => {
+    const status = req.params.status;
+    switch (status) {
+        case "in_progress":
+            try {
+                const token = req.headers.authorization.split(" ")[1];
+                const userData = jwt.verify(token, process.env.JWT_SECRET);
+                const projects = await Status.findAll({ where: { UserId: userData.id, in_progress: true }, include: [Project] });
+                res.status(200).json(projects)
+            } catch (err) {
+                console.log(err)
+            } break;
+        case "saved_for_later":
+            try {
+                const token = req.headers.authorization.split(" ")[1];
+                const userData = jwt.verify(token, process.env.JWT_SECRET);
+                const projects = await Status.findAll({ where: { UserId: userData.id, saved_for_later: true }, include: [Project] });
+                res.status(200).json(projects)
+            } catch (err) {
+                console.log(err)
+            } break;
+        case "starred":
+            try {
+                const token = req.headers.authorization.split(" ")[1];
+                const userData = jwt.verify(token, process.env.JWT_SECRET);
+                const projects = await Status.findAll({ where: { UserId: userData.id, starred: true }, include: [Project] });
+                res.status(200).json(projects)
+            } catch (err) {
+                console.log(err)
+            } break;
+        case "completed":
+            try {
+                const token = req.headers.authorization.split(" ")[1];
+                const userData = jwt.verify(token, process.env.JWT_SECRET);
+                const projects = await Status.findAll({ where: { UserId: userData.id, completed: true }, include: [Project] });
+                res.status(200).json(projects)
+            } catch (err) {
+                console.log(err)
+            } break;
+        case "all":
+            try {
+                const token = req.headers.authorization.split(" ")[1];
+                const userData = jwt.verify(token, process.env.JWT_SECRET);
+                const projects = await Status.findAll({ where: { UserId: userData.id }, include: [Project] });
+                res.status(200).json(projects)
+            } catch (err) {
+                console.log(err)
+            } break;
+        default:
+            console.log("What is ");
+            break;
     }
 });
 
@@ -76,13 +73,13 @@ router.put('/:id', async (req, res) => {
                     completed: req.body.completed,
                 },
                 {
-                  where: {
-                    UserId: userData.id, 
-                    ProjectId: req.params.id
-                  },
+                    where: {
+                        UserId: userData.id,
+                        ProjectId: req.params.id
+                    },
                 }
-              );
-              res.status(200).json(updatedStatus)
+            );
+            res.status(200).json(updatedStatus)
         } else {
             const newStatus = await Status.create(
                 {
@@ -90,11 +87,11 @@ router.put('/:id', async (req, res) => {
                     saved_for_later: req.body.saved_for_later,
                     starred: req.body.starred,
                     completed: req.body.completed,
-                    UserId: userData.id, 
+                    UserId: userData.id,
                     ProjectId: req.params.id,
                 }
-              );
-              res.status(200).json(newStatus)
+            );
+            res.status(200).json(newStatus)
         }
     } catch (err) {
         console.log(err)
