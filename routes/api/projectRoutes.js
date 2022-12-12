@@ -47,7 +47,6 @@ router.get("/:id", (req, res) => {
 
 // create project
 router.post("/", async (req, res) => {
-  console.log("hi");
 
   try {
     const token = req.headers.authorization.split(" ")[1];
