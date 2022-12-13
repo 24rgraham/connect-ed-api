@@ -8,7 +8,7 @@ router.use('/api', apiRoutes);
 
 //home Route
 router.get("/", (req,res)=>{
-    res.send("/connect-ed")
+    res.send("/login")
 })
 
 module.exports = router;
