@@ -11,7 +11,7 @@ router.get('/:status', async (req, res) => {
             try {
                 const token = req.headers.authorization.split(" ")[1];
                 const userData = jwt.verify(token, process.env.JWT_SECRET);
-                const projects = await Status.findAll({ where: { UserId: userData.id, in_progress: true }, include: [Project] });
+                const projects = await Status.findAll({ where: { UserId: userData.id, in_progress: true }, include: [Project], attributes:["in_progress"]  });
                 res.status(200).json(projects)
             } catch (err) {
                 console.log(err)
@@ -20,7 +20,7 @@ router.get('/:status', async (req, res) => {
             try {
                 const token = req.headers.authorization.split(" ")[1];
                 const userData = jwt.verify(token, process.env.JWT_SECRET);
-                const projects = await Status.findAll({ where: { UserId: userData.id, saved_for_later: true }, include: [Project] });
+                const projects = await Status.findAll({ where: { UserId: userData.id, saved_for_later: true }, include: [Project], attributes:["saved_for_later"] });
                 res.status(200).json(projects)
             } catch (err) {
                 console.log(err)
@@ -29,7 +29,7 @@ router.get('/:status', async (req, res) => {
             try {
                 const token = req.headers.authorization.split(" ")[1];
                 const userData = jwt.verify(token, process.env.JWT_SECRET);
-                const projects = await Status.findAll({ where: { UserId: userData.id, starred: true }, include: [Project] });
+                const projects = await Status.findAll({ where: { UserId: userData.id, starred: true }, include: [Project], attributes:["starred"]  });
                 res.status(200).json(projects)
             } catch (err) {
                 console.log(err)
@@ -38,7 +38,7 @@ router.get('/:status', async (req, res) => {
             try {
                 const token = req.headers.authorization.split(" ")[1];
                 const userData = jwt.verify(token, process.env.JWT_SECRET);
-                const projects = await Status.findAll({ where: { UserId: userData.id, completed: true }, include: [Project] });
+                const projects = await Status.findAll({ where: { UserId: userData.id, completed: true }, include: [Project], attributes:["completed"]  });
                 res.status(200).json(projects)
             } catch (err) {
                 console.log(err)
@@ -47,7 +47,7 @@ router.get('/:status', async (req, res) => {
             try {
                 const token = req.headers.authorization.split(" ")[1];
                 const userData = jwt.verify(token, process.env.JWT_SECRET);
-                const projects = await Status.findAll({ where: { UserId: userData.id }, include: [Project] });
+                const projects = await Status.findAll({ where: { UserId: userData.id }, include: [Project], attributes:["saved_for_later","starred","in_progress","completed"]  });
                 res.status(200).json(projects)
             } catch (err) {
                 console.log(err)
