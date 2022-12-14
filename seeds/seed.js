@@ -42,23 +42,23 @@ const userData = [
 
 const projectData = [
   {
-    title: "Build a table",
-    image: "https://placekitten.com/300/200",
-    grade_lvl: "8",
+    title: "Debris Hut Survival Shelter",
+    image: "https://photos.app.goo.gl/3pTRSnHnpZJhdHHG6",
+    grade_lvl: "9",
     est_time: 4,
-    overview_desc: "blahdgak;lajnert",
-    directions: "Step one .. somganargre step two..adfgagrdf",
-    materials: "arknjgaerjng;kaerjngaergregr aregaer aergrsd",
-    resources: "new;lkrnwe5 vlkewn;r nergre",
+    overview_desc: "Learn about the physics of heat, and construction in this Social Emotional building, creative team challenge.",
+    directions: "These will be detailed directions that would include: a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.’",
+    materials: "A materials list that includes quantity for each child/class, where to source them if unique, etc.",
+    resources: "https://www.youtube.com/watch?v=tzUpH0Zft5c",
     UserId: 2,
   },
   {
-    title: "Paint a wall",
+    title: "Corn Husk Doll",
     image: "https://placekitten.com/300/200",
     grade_lvl: "4",
     est_time: 6,
-    overview_desc: "blahd gak;lajner  t",
-    directions: "Step one: pick a wall-- Step two: start painting",
+    overview_desc: "This Project explores North American Indigenous culture in a hands on craft while creating lots of space for discussions around history",
+    directions: "These will be directions that include a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.",
     materials: "ark njgae rjng;kaerjng naergregr aregaer aergrsd",
     resources: "ne w;lkr nwe5 vlkewn;r  nergre",
     UserId: 1,
@@ -139,11 +139,15 @@ const subjectData = [
   {
     name: "Nature",
   },
+  {
+    name: "Science",
+  },
+  
 ]
 
 const curriculumTagData = [
   {
-    CurriculumId: 1,
+    CurriculumId: 3,
     ProjectId: 1,
   },
   {
@@ -162,12 +166,16 @@ const curriculumTagData = [
 
 const subjectTagData = [
   {
-    SubjectId: 10,
+    SubjectId: 13,
     ProjectId: 1,
   },
   {
-    SubjectId: 9,
-    ProjectId: 2,
+    SubjectId: 12,
+    ProjectId: 1,
+  },
+  {
+    SubjectId: 2,
+    ProjectId: 1,
   },
   {
     SubjectId: 3,
