@@ -89,55 +89,93 @@ const projectData = [
 
 const curriculumData = [
   {
+    id: 1,
     name: "Montessori",
   },
   {
+
+    id: 2,
+    name: "Waldorf",
+  },
+  {
+    id: 3,
+    name: "Standard",
+  },
+  {
+    id: 4,
     name: "PBL",
   },
   {
-    name: "Beetles",
+    id: 5,
+    name: "Reggio Emilia",
   },
   {
-    name: "Waldorf",
+    id: 6,
+    name: "B.E.E.T.L.E.S (Outdoor Ed.)",
   },
 ]
 
 const subjectData = [
   {
-    name: "STEM",
-  },
-  {
-    name: "SEL",
-  },
-  {
-    name: "Culture",
-  },
-  {
-    name: "PE",
-  },
-  {
-    name: "Literature",
-  },
-  {
-    name: "Computer Science",
-  },
-  {
-    name: "Civics",
-  },
-  {
-    name: "History",
-  },
-  {
+    id: 1,
     name: "Art",
   },
   {
-    name: "Woodworking",
-  },
-  {
+
+    id: 2,
     name: "Maths",
   },
   {
-    name: "Nature",
+    id: 3,
+    name: "History",
+  },
+  {
+    id: 4,
+    name: "SEL",
+  },
+  {
+    id: 5,
+    name: "Woodworking",
+  },
+  {
+    id: 6,
+    name: "Anthropologie",
+  },
+  {
+    id: 7,
+    name: "Science",
+  },
+  {
+    id: 8,
+    name: "English",
+  },
+  {
+    id: 9,
+    name: "Writing",
+  },
+  {
+    id: 10,
+    name: "Spanish",
+  },
+  {
+    id: 11,
+    name: "French",
+  },
+  {
+    id: 12,
+    name: "Outdoor",
+  },
+  {
+    id: 13,
+    name: "Physical Education",
+  },
+  {
+    id: 14,
+    name: "Cultural Holidays",
+  },
+  {
+    id: 15,
+    name: "Culture",
   },
 ]
 
