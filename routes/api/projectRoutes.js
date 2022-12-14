@@ -1,10 +1,24 @@
 const router = require("express").Router();
-const { User, Project, Comment, Curriculum, CurriculumTag, Subject, SubjectTag } = require("../../models");
+const jwt = require("jsonwebtoken")
+
+const {
+  User,
+  Project,
+  Comment,
+  Curriculum,
+  CurriculumTag,
+  Subject,
+  SubjectTag,
+} = require("../../models");
 
 // get all projects
 router.get("/", (req, res) => {
   Project.findAll({
-    include: [Comment, { model: Curriculum, through: CurriculumTag }, { model: Subject, through: SubjectTag }],
+    include: [
+      Comment,
+      { model: Curriculum, through: CurriculumTag },
+      { model: Subject, through: SubjectTag },
+    ],
   })
     .then((project) => {
       res.json(project);
@@ -14,10 +28,25 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/getprojectsfromtoken", async (req, res) => {
+  try {
+      const token = req.headers.authorization.split(" ")[1];
+      const userData = jwt.verify(token, process.env.JWT_SECRET);
+      const projectData = await Project.findAll({ where: { UserId: userData.id}})
+      res.json(projectData);
+  } catch (error) {
+      res.status(500).json({ user: false });
+  }
+});
+
 // get one project by id
 router.get("/:id", (req, res) => {
   Project.findByPk(req.params.id, {
-    include: [Comment, { model: Curriculum, through: CurriculumTag }, { model: Subject, through: SubjectTag }],
+    include: [
+      Comment,
+      { model: Curriculum, through: CurriculumTag },
+      { model: Subject, through: SubjectTag },
+    ],
   })
     .then((project) => {
       res.json(project);
@@ -31,9 +60,10 @@ router.get("/:id", (req, res) => {
 
 // create project
 router.post("/", async (req, res) => {
-  console.log('hi');
 
   try {
+    const token = req.headers.authorization.split(" ")[1];
+    const userData = jwt.verify(token, process.env.JWT_SECRET);
     const newProject = await Project.create({
       title: req.body.title,
       image: req.body.image,
@@ -43,10 +73,10 @@ router.post("/", async (req, res) => {
       directions: req.body.directions,
       materials: req.body.materials,
       resources: req.body.resources,
-      UserId: req.session.UserId,
+      UserId: userData.id,
     });
-    const subjects = await newProject.addSubjects(req.body.subjects)
-    const curriculums = await newProject.addCurriculums(req.body.curriculums)
+    const subjects = await newProject.addSubjects(req.body.subjects);
+    const curriculums = await newProject.addCurriculums(req.body.curriculums);
     res.status(200).json(newProject);
   } catch (err) {
     console.log(err);
@@ -57,9 +87,11 @@ router.post("/", async (req, res) => {
 
 //update project by id
 router.put("/:id", async (req, res) => {
-  console.log('hi');
+  console.log("hi");
 
   try {
+    const token = req.headers.authorization.split(" ")[1];
+    const userData = jwt.verify(token, process.env.JWT_SECRET);
     const deleteSujects = await SubjectTag.destroy({
       where: {
         ProjectId: req.params.id,
@@ -70,26 +102,29 @@ router.put("/:id", async (req, res) => {
         ProjectId: req.params.id,
       },
     });
-    const updatedProject = await Project.update({
-      title: req.body.title,
-      image: req.body.image,
-      grade_lvl: req.body.grade_lvl,
-      est_time: req.body.est_time,
-      overview_desc: req.body.overview_desc,
-      directions: req.body.directions,
-      materials: req.body.materials,
-      resources: req.body.resources,
-      UserId: req.session.UserId,
-    },
+    const updatedProject = await Project.update(
+      {
+        title: req.body.title,
+        image: req.body.image,
+        grade_lvl: req.body.grade_lvl,
+        est_time: req.body.est_time,
+        overview_desc: req.body.overview_desc,
+        directions: req.body.directions,
+        materials: req.body.materials,
+        resources: req.body.resources,
+        UserId: userData.id,
+      },
       {
         where: {
           id: req.params.id,
         },
       }
     );
-    const actualUpdatedProject = await Project.findByPk(req.params.id)
-    const subjects = await actualUpdatedProject.addSubjects(req.body.subjects)
-    const curriculums = await actualUpdatedProject.addCurriculums(req.body.curriculums)
+    const actualUpdatedProject = await Project.findByPk(req.params.id);
+    const subjects = await actualUpdatedProject.addSubjects(req.body.subjects);
+    const curriculums = await actualUpdatedProject.addCurriculums(
+      req.body.curriculums
+    );
     res.status(200).json(actualUpdatedProject);
   } catch (err) {
     console.log(err);
