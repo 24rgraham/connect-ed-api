@@ -95,7 +95,7 @@ const projectData = [
     UserId: 5,
   },
   {
-    title: "Build a table",
+    title: "Hydroponics Indoor Classroom Garden",
     image: "hydro",
     grade_lvl: "11",
     est_time: 12,
@@ -285,6 +285,31 @@ const statusData = [
     saved_for_later: true,
     UserId: 2,
     ProjectId: 2,
+  },
+  {
+    starred: true,
+    UserId: 3,
+    ProjectId: 1,
+  },
+  {
+    starred: true,
+    UserId: 3,
+    ProjectId: 2,
+  },
+  {
+    completed: true,
+    UserId: 2,
+    ProjectId: 5,
+  },
+  {
+    in_progress: true,
+    UserId: 1,
+    ProjectId: 1,
+  },
+  {
+    saved_for_later: true,
+    UserId: 2,
+    ProjectId: 6,
   },
   {
     starred: true,
