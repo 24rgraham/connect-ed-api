@@ -3,7 +3,6 @@ const { User, Project, Status, Subject, Curriculum, CurriculumTag, SubjectTag } 
 
 const userData = [
   {
-    
     email: "john@cusack.com",
     password: "Iamjohn",
     first_name: "Shelly",
@@ -62,6 +61,7 @@ const userData = [
 
 const projectData = [
   {
+    id: 1, 
     title: "Debris Hut Survival Shelter",
     image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063338/IMG_3326_sujm2j.jpg",
     grade_lvl: "9",
@@ -73,6 +73,7 @@ const projectData = [
     UserId: 2,
   },
   {
+    id: 2, 
     title: "Garlic Grow",
     image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063336/garlic_nk8uup.jpg",
     grade_lvl: "8",
@@ -84,6 +85,7 @@ const projectData = [
     UserId: 3,
   },
   {
+    id:3,
     title: "Corn Husk Dolls",
     image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063336/3e5W40R1SZOpgJky3uLo_urb11t.webp",
     grade_lvl: "K",
@@ -91,10 +93,11 @@ const projectData = [
     overview_desc: "This Project explores North American Indigenous culture in a hands on craft while creating lots of space for discussions around history",
     directions: "These will be detailed directions that would include: a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.’",
     materials: "A materials list that includes quantity for each student/class, where to source them if unique, etc.",
-    resources: "",
+    resources: "fhdsfdsk",
     UserId: 5,
   },
   {
+    id:4, 
     title: "Hydroponics Indoor Garden Table",
     image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063336/hydro_tnvere.jpg",
     grade_lvl: "11",
@@ -105,6 +108,7 @@ const projectData = [
     UserId: 1,
   },
   {
+    id:5, 
     title: "Natural Dye",
     image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063336/FA2246QI9GWE69V_ke7kxd.webp",
     grade_lvl: "12",
@@ -112,10 +116,11 @@ const projectData = [
     overview_desc: "An exploration in nature, science and art. This is a great opportunity for students to bring in food scraps to be reused as natural day, or you can forage from nature ",
     directions: "These will be detailed directions that would include: a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.’",
     materials: "A materials list that includes quantity for each student/class, where to source them if unique, etc.",
-    resources: "",
+    resources: "https://www.architecturaldigest.com/story/how-to-naturally-dye-using-foods , https://www.youtube.com/watch?v=78gt6y9Lrf4",
     UserId: 4,
   },
   {
+    id:6, 
     title: "Projected Nature Classroom Provocation",
     image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063337/image-asset_e5llpw.jpg",
     grade_lvl: "1",
@@ -123,10 +128,11 @@ const projectData = [
     overview_desc: "Experience the natural world from within your classroom",
     directions: "These will be detailed directions that would include: a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.’",
     materials: "A materials list that includes quantity for each child/class, where to source them if unique, etc.",
-    resources: "ne w;lkr nwe5 vlkewn;r  nergre",
+    resources: "https://www.youtube.com/watch?v=ZXYW2LGrYYA",
     UserId: 3,
   },
   {
+    id:7, 
     title: "Fire Building",
     image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063341/IMG_3631_keldy8.jpg",
     grade_lvl: "4",
@@ -135,9 +141,10 @@ const projectData = [
     directions: "These will be detailed directions that would include: a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.’",
     materials: "A materials list that includes quantity for each child/class, where to source them if unique, etc.",
     resources: "https://blog.ucogear.com/fire-starting-101-the-basics-of-starting-a-fire/e",
-    UserId: 6,
+    UserId: 5,
   },
   {
+    id:8,
     title: "Lunar New Year Lantern",
     image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063338/IMG_3369_ihuonm.jpg",
     grade_lvl: "5",
@@ -149,6 +156,7 @@ const projectData = [
     UserId: 5,
   },
   {
+    id:9,
     title: "Sugar Skull",
     image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063339/sugarSkull_o3gcp8.jpg",
     grade_lvl: "2",
@@ -160,6 +168,7 @@ const projectData = [
     UserId: 5,
   },
   {
+    id:10,
     title: "Dia De los Muertos Ofrenda",
     image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063342/ofrenda_crgjqc.jpg",
     grade_lvl: "6",
@@ -171,6 +180,7 @@ const projectData = [
     UserId: 5,
   },
   {
+    id:11,
     title: "Civil Rights Protest",
     image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063338/IMG_3523_uqiwrc.jpg",
     grade_lvl: "4",
@@ -182,6 +192,7 @@ const projectData = [
     UserId: 5,
   },
   {
+    id:12, 
     title: "Mushrooms",
     image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063338/mushrooms_tihso7.jpg",
     grade_lvl: "4",
@@ -193,18 +204,19 @@ const projectData = [
     UserId: 5,
   },
   {
+    id:13,
     title: "Vermicology Composting",
     image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063341/worms-1-5_ht5enl.jpg",
     grade_lvl: "4",
     est_time: 1,
     overview_desc: "Class pet? Why not a worm bin to explore science, and nature, and the power of our wriggly friends who live below the surface.",
-
     directions: "These will be detailed directions that would include: a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.’",
     materials: "A materials list that includes quantity for each child/class, where to source them if unique, etc.",
     resources: "https://kids.nationalgeographic.com/animals/invertebrates/facts/earthworm , https://urbanwormcompany.com/how-to-start-worm-bin/",
     UserId: 5,
   },
   {
+    id:14,
     title: "Beeswax Candles",
     image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063338/IMG_0911_znpafu.jpg",
     grade_lvl: "4",
@@ -324,34 +336,86 @@ const curriculumTagData = [
     ProjectId: 1,
   },
   {
-    CurriculumId: 5,
-    ProjectId: 1,
+    CurriculumId: 6,
+    ProjectId: 2,
   },
   {
     CurriculumId: 4,
     ProjectId: 2,
   },
   {
-    CurriculumId: 16,
-    ProjectId: 2,
+    CurriculumId: 2,
+    ProjectId: 3,
   },
   {
-    CurriculumId: 3,
-    ProjectId: 3,
+    CurriculumId: 5,
+    ProjectId: 4,
+  },
+  {
+    CurriculumId: 6,
+    ProjectId: 4,
+  },
+  {
+    CurriculumId: 4,
+    ProjectId: 4,
+  },
+  {
+    CurriculumId: 2,
+    ProjectId: 5,
   },
   {
     CurriculumId: 1,
     ProjectId: 4,
   },
   {
-    CurriculumId: 5,
+    CurriculumId: 6,
     ProjectId: 6,
+  },
+  {
+    CurriculumId: 6,
+    ProjectId: 7,
+  },
+  {
+    CurriculumId: 3,
+    ProjectId: 8,
+  },
+  {
+    CurriculumId: 1,
+    ProjectId: 9,
+  },
+  {
+    CurriculumId: 1,
+    ProjectId: 10,
+  },
+  {
+    CurriculumId: 4,
+    ProjectId: 11,
+  },
+  {
+    CurriculumId: 5,
+    ProjectId: 12,
+  },
+  {
+    CurriculumId: 1,
+    ProjectId: 12,
+  },
+  {
+    CurriculumId: 4,
+    ProjectId: 13,
+  },
+  {
+    CurriculumId: 2,
+    ProjectId: 14,
+  },
+  {
+    CurriculumId: 4,
+    ProjectId: 14,
   },
 ]
 
 const subjectTagData = [
   {
-    SubjectId: 16,
+    SubjectId: 7,
     ProjectId: 1,
   },
   {
@@ -363,20 +427,136 @@ const subjectTagData = [
     ProjectId: 1,
   },
   {
-    SubjectId: 3,
+    SubjectId: 7,
     ProjectId: 2,
   },
   {
-    SubjectId: 10,
+    SubjectId: 12,
+    ProjectId: 2,
+  },
+  {
+    SubjectId: 4,
+    ProjectId: 2,
+  },
+  {
+    SubjectId: 3,
     ProjectId: 3,
   },
   {
-    SubjectId: 7,
+    SubjectId: 14,
+    ProjectId: 3,
+  },
+  {
+    SubjectId: 16,
     ProjectId: 4,
   },
   {
+    SubjectId: 12,
+    ProjectId: 4,
+  },
+  {
+    SubjectId: 12,
+    ProjectId: 5,
+  },
+  {
+    SubjectId: 16,
+    ProjectId: 5,
+  },
+  {
+    SubjectId: 1,
+    ProjectId: 5,
+  },
+  {
+    SubjectId: 1,
+    ProjectId: 6,
+  },
+  {
+    SubjectId: 16,
+    ProjectId: 6,
+  },
+  {
+    SubjectId: 12,
+    ProjectId: 6,
+  },
+  {
+    SubjectId: 4,
+    ProjectId: 7,
+  },
+  {
+    SubjectId: 16,
+    ProjectId: 7,
+  },
+  {
+    SubjectId: 12,
+    ProjectId: 7,
+  },
+  {
+    SubjectId: 1,
+    ProjectId: 8,
+  },
+  {
+    SubjectId: 3,
+    ProjectId: 8,
+  },
+  {
+    SubjectId: 14,
+    ProjectId: 8,
+  },
+  {
     SubjectId: 2,
-    ProjectId: 3,
+    ProjectId: 9,
+  },
+  {
+    SubjectId: 1,
+    ProjectId: 9,
+  },
+  {
+    SubjectId: 14,
+    ProjectId: 9,
+  },
+  {
+    SubjectId: 3,
+    ProjectId: 9,
+  },
+  {
+    SubjectId: 1,
+    ProjectId: 11,
+  },
+  {
+    SubjectId: 3,
+    ProjectId: 11,
+  },
+  {
+    SubjectId: 6,
+    ProjectId: 11,
+  },
+  {
+    SubjectId: 15,
+    ProjectId: 11,
+  },
+  {
+    SubjectId: 1,
+    ProjectId: 12,
+  },
+  {
+    SubjectId: 16,
+    ProjectId: 12,
+  },
+  {
+    SubjectId: 12,
+    ProjectId: 12,
+  },
+  {
+    SubjectId: 16,
+    ProjectId: 13,
+  },
+  {
+    SubjectId: 1,
+    ProjectId: 14,
+  },
+  {
+    SubjectId: 16,
+    ProjectId: 14,
   },
 ]
 
