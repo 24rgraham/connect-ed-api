@@ -101,7 +101,7 @@ const projectData = [
     title: "Hydroponics Indoor Garden Table",
     image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063336/hydro_tnvere.jpg",
     grade_lvl: "11",
-    est_time: 12,
+    est_time: 11,
     overview_desc: "Hydroponics is a great experiment in food, science, and hands on learning. A school year long (and beyond) interactive project that can be adapted for all ages.",
     directions: "These will be detailed directions that would include: a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.’",
     materials: "A materials list that includes quantity for each student/class, where to source them if unique, etc.",
