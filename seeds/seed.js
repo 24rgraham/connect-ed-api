@@ -3,11 +3,11 @@ const { User, Project, Status, Subject, Curriculum, CurriculumTag, SubjectTag } 
 
 const userData = [
   {
-    name: "John Cusack",
+    
     email: "john@cusack.com",
     password: "Iamjohn",
-    first_name: "John",
-    last_name: "Cusack",
+    first_name: "Shelly",
+    last_name: "Shell",
     school: "Roosevelt",
     city: "Bethleham",
     state: "PA",
@@ -15,11 +15,10 @@ const userData = [
     profile_picture: null,
   },
   {
-    name: "Jack Sparrow",
     email: "jack@sparrow.com",
     password: "Iamthecaptain",
-    first_name: "Jack",
-    last_name: "Sparrow",
+    first_name: "Robyn",
+    last_name: "Hood",
     school: "Ballard",
     city: "Seattle",
     state: "WA",
@@ -27,11 +26,32 @@ const userData = [
     profile_picture: null,
   },
   {
-    name: "Harry Potter",
-    email: "yourawizard@harry.com",
+    email: "dance@dance.dance",
+    password: "dancingdeedee",
+    first_name: "Dee Dee",
+    last_name: "Dee",
+    school: "Garfield",
+    city: "Seattle",
+    state: "WA",
+    language: "British English",
+    profile_picture: null,
+  },
+  {
+    email: "hermione@harry.com",
     password: "voldemort",
-    first_name: "Harry",
-    last_name: "Potter",
+    first_name: "",
+    last_name: "Hermione",
+    school: "Granger",
+    city: "Seattle",
+    state: "WA",
+    language: "British English",
+    profile_picture: null,
+  },
+  {
+    email: "jump@jump.jump",
+    password: "jwaltzingmatilda",
+    first_name: "Matilda",
+    last_name: "Dahl",
     school: "Garfield",
     city: "Seattle",
     state: "WA",
@@ -42,25 +62,46 @@ const userData = [
 
 const projectData = [
   {
-    title: "Build a table",
-    image: "https://placekitten.com/300/200",
-    grade_lvl: "8",
+    title: "Debris Hut Survival Shelter",
+    image: "img_3326",
+    grade_lvl: "9",
     est_time: 4,
-    overview_desc: "blahdgak;lajnert",
-    directions: "Step one .. somganargre step two..adfgagrdf",
-    materials: "arknjgaerjng;kaerjngaergregr aregaer aergrsd",
-    resources: "new;lkrnwe5 vlkewn;r nergre",
+    overview_desc: "Learn about the physics of heat, and construction in this Social Emotional building, creative team challenge.",
+    directions: "These will be detailed directions that would include: a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.’",
+    materials: "A materials list that includes quantity for each student/class, where to source them if unique, etc.",
+    resources: "https://www.youtube.com/watch?v=tzUpH0Zft5c",
     UserId: 2,
   },
   {
-    title: "Paint a wall",
-    image: "https://placekitten.com/300/200",
-    grade_lvl: "4",
+    title: "Garlic Grow",
+    image: "garlic",
+    grade_lvl: "8",
+    est_time: 8,
+    overview_desc: "Growing Garlic is the perfect school-year long exploration in the cycle of growing to eating food. Garlic is accessible, and easy to plant. A variety of containers will suit your needs if garden space is not available ",
+    directions: "These will be detailed directions that would include: a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.’",
+    materials: "A materials list that includes quantity for each student/class, where to source them if unique, etc.",
+    resources: "new;lkrnwe5 vlkewn;r nergre",
+    UserId: 3,
+  },
+  {
+    title: "Corn Husk Dolls",
+    image: "3e5W40R1SZOpgJky3uLo.",
+    grade_lvl: "K",
     est_time: 6,
-    overview_desc: "blahd gak;lajner  t",
-    directions: "Step one: pick a wall-- Step two: start painting",
-    materials: "ark njgae rjng;kaerjng naergregr aregaer aergrsd",
-    resources: "ne w;lkr nwe5 vlkewn;r  nergre",
+    overview_desc: "This Project explores North American Indigenous culture in a hands on craft while creating lots of space for discussions around history",
+    directions: "These will be detailed directions that would include: a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.’",
+    materials: "A materials list that includes quantity for each student/class, where to source them if unique, etc.",
+    resources: "",
+    UserId: 5,
+  },
+  {
+    title: "Build a table",
+    image: "hydro",
+    grade_lvl: "11",
+    est_time: 12,
+    overview_desc: "Hydroponics is a great experiment in food, science, and hands on learning. A school year long (and beyond) interactive project that can be adapted for all ages.",
+    directions: "These will be detailed directions that would include: a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.’",
+    materials: "A materials list that includes quantity for each student/class, where to source them if unique, etc.",
     UserId: 1,
   },
   {
@@ -70,8 +111,9 @@ const projectData = [
     est_time: 5,
     overview_desc: "b  lahdg  ak;la   jnert",
     directions: "Step 1: say 1.. Step 2: say 2.. Step 3: say 3.. Step 4: say 4.. Step 5: say 5.. Step 6: Party",
-    materials: "rev a;dkvjre nPINGAE",
-    resources: "new;SSlkrnwASDe5 vlkewn;r nergre",
+    directions: "These will be detailed directions that would include: a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.’",
+    materials: "A materials list that includes quantity for each student/class, where to source them if unique, etc.",
+    resources: "",
     UserId: 1,
   },
   {
@@ -80,8 +122,8 @@ const projectData = [
     grade_lvl: "1",
     est_time: 1,
     overview_desc: "I didnt realize caps lock was on when i typed the title",
-    directions: "Step one: do a backflip",
-    materials: "trampoline.",
+    directions: "These will be detailed directions that would include: a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.’",
+    materials: "A materials list that includes quantity for each child/class, where to source them if unique, etc.",
     resources: "ne w;lkr nwe5 vlkewn;r  nergre",
     UserId: 3,
   },
@@ -177,11 +219,15 @@ const subjectData = [
     id: 15,
     name: "Culture",
   },
+  {
+    name: "Science",
+  },
+  
 ]
 
 const curriculumTagData = [
   {
-    CurriculumId: 1,
+    CurriculumId: 3,
     ProjectId: 1,
   },
   {
@@ -200,12 +246,16 @@ const curriculumTagData = [
 
 const subjectTagData = [
   {
-    SubjectId: 10,
+    SubjectId: 13,
     ProjectId: 1,
   },
   {
-    SubjectId: 9,
-    ProjectId: 2,
+    SubjectId: 12,
+    ProjectId: 1,
+  },
+  {
+    SubjectId: 2,
+    ProjectId: 1,
   },
   {
     SubjectId: 3,
