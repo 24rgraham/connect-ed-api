@@ -63,7 +63,7 @@ const userData = [
 const projectData = [
   {
     title: "Debris Hut Survival Shelter",
-    image: "img_3326",
+    image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063338/IMG_3326_sujm2j.jpg",
     grade_lvl: "9",
     est_time: 4,
     overview_desc: "Learn about the physics of heat, and construction in this Social Emotional building, creative team challenge.",
@@ -74,7 +74,7 @@ const projectData = [
   },
   {
     title: "Garlic Grow",
-    image: "garlic",
+    image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063336/garlic_nk8uup.jpg",
     grade_lvl: "8",
     est_time: 8,
     overview_desc: "Growing Garlic is the perfect school-year long exploration in the cycle of growing to eating food. Garlic is accessible, and easy to plant. A variety of containers will suit your needs if garden space is not available ",
@@ -85,7 +85,7 @@ const projectData = [
   },
   {
     title: "Corn Husk Dolls",
-    image: "3e5W40R1SZOpgJky3uLo.",
+    image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063336/3e5W40R1SZOpgJky3uLo_urb11t.webp",
     grade_lvl: "K",
     est_time: 6,
     overview_desc: "This Project explores North American Indigenous culture in a hands on craft while creating lots of space for discussions around history",
@@ -95,8 +95,8 @@ const projectData = [
     UserId: 5,
   },
   {
-    title: "Hydroponics Indoor Classroom Garden",
-    image: "hydro",
+    title: "Build a table",
+    image: "https://res.cloudinary.com/dqv6cj4bc/image/upload/v1671063336/hydro_tnvere.jpg",
     grade_lvl: "11",
     est_time: 12,
     overview_desc: "Hydroponics is a great experiment in food, science, and hands on learning. A school year long (and beyond) interactive project that can be adapted for all ages.",
