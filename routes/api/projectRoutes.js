@@ -28,6 +28,17 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/getprojectsfromtoken", async (req, res) => {
+  try {
+      const token = req.headers.authorization.split(" ")[1];
+      const userData = jwt.verify(token, process.env.JWT_SECRET);
+      const projectData = await Project.findAll({ where: { UserId: userData.id}})
+      res.json(projectData);
+  } catch (error) {
+      res.status(500).json({ user: false });
+  }
+});
+
 // get one project by id
 router.get("/:id", (req, res) => {
   Project.findByPk(req.params.id, {

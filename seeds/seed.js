@@ -53,15 +53,37 @@ const projectData = [
     UserId: 2,
   },
   {
-    title: "Corn Husk Doll",
+    title: "Garlic Grow",
     image: "https://placekitten.com/300/200",
-    grade_lvl: "4",
+    grade_lvl: "8",
+    est_time: 8,
+    overview_desc: "Growing Garlic is the perfect school-year long exploration in the cycle of growing to eating food. Garlic is accessible, and easy to plant. A variety of containers will suit your needs if garden space is not available ",
+    directions: "These will be detailed directions that would include: a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.’",
+    materials: "A materials list that includes quantity for each child/class, where to source them if unique, etc.",
+    resources: "new;lkrnwe5 vlkewn;r nergre",
+    UserId: 2,
+  },
+  {
+    title: "Corn Husk Dolls",
+    image: "https://placekitten.com/300/200",
+    grade_lvl: "K",
     est_time: 6,
     overview_desc: "This Project explores North American Indigenous culture in a hands on craft while creating lots of space for discussions around history",
     directions: "These will be directions that include a timeline of expectations, what students will be doing every step of the way, how to break them into teams (if need be), instructions on what each team/student should be doing and when, safety measures, how to set up for the project/assignment, etc.",
     materials: "ark njgae rjng;kaerjng naergregr aregaer aergrsd",
     resources: "ne w;lkr nwe5 vlkewn;r  nergre",
     UserId: 1,
+  },
+  {
+    title: "Build a table",
+    image: "https://placekitten.com/300/200",
+    grade_lvl: "8",
+    est_time: 8,
+    overview_desc: "Growing Garlic is the perfect school-year long exploration in the cycle of growing to eating food. Garlic is accessible, and easy to plant. A variety of containers will suit your needs if garden space is not available ",
+    directions: "Step one .. somganargre step two..adfgagrdf",
+    materials: "arknjgaerjng;kaerjngaergregr aregaer aergrsd",
+    resources: "new;lkrnwe5 vlkewn;r nergre",
+    UserId: 2,
   },
   {
     title: "Count to 5",
@@ -89,55 +111,93 @@ const projectData = [
 
 const curriculumData = [
   {
+    id: 1,
     name: "Montessori",
   },
   {
+
+    id: 2,
+    name: "Waldorf",
+  },
+  {
+    id: 3,
+    name: "Standard",
+  },
+  {
+    id: 4,
     name: "PBL",
   },
   {
-    name: "Beetles",
+    id: 5,
+    name: "Reggio Emilia",
   },
   {
-    name: "Waldorf",
+    id: 6,
+    name: "B.E.E.T.L.E.S (Outdoor Ed.)",
   },
 ]
 
 const subjectData = [
   {
-    name: "STEM",
-  },
-  {
-    name: "SEL",
-  },
-  {
-    name: "Culture",
-  },
-  {
-    name: "PE",
-  },
-  {
-    name: "Literature",
-  },
-  {
-    name: "Computer Science",
-  },
-  {
-    name: "Civics",
-  },
-  {
-    name: "History",
-  },
-  {
+    id: 1,
     name: "Art",
   },
   {
-    name: "Woodworking",
-  },
-  {
+
+    id: 2,
     name: "Maths",
   },
   {
-    name: "Nature",
+    id: 3,
+    name: "History",
+  },
+  {
+    id: 4,
+    name: "SEL",
+  },
+  {
+    id: 5,
+    name: "Woodworking",
+  },
+  {
+    id: 6,
+    name: "Anthropologie",
+  },
+  {
+    id: 7,
+    name: "Science",
+  },
+  {
+    id: 8,
+    name: "English",
+  },
+  {
+    id: 9,
+    name: "Writing",
+  },
+  {
+    id: 10,
+    name: "Spanish",
+  },
+  {
+    id: 11,
+    name: "French",
+  },
+  {
+    id: 12,
+    name: "Outdoor",
+  },
+  {
+    id: 13,
+    name: "Physical Education",
+  },
+  {
+    id: 14,
+    name: "Cultural Holidays",
+  },
+  {
+    id: 15,
+    name: "Culture",
   },
   {
     name: "Science",

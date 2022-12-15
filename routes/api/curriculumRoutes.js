@@ -29,4 +29,15 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// get all curriculums
+router.get("/", (req, res) => {
+    Curriculum.findAll()
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => {
+        res.status(500).json({ msg: "An error has occurred", err });
+      });
+});
+
 module.exports = router;
