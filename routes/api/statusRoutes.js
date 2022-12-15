@@ -67,7 +67,10 @@ router.put('/:id', async (req, res) => {
         if (projects) {
             const updatedStatus = await Status.update(
                 {
-                    ...req.body,
+                    starred: req.body.starred,
+                    completed: req.body.completed,
+                    in_progress: req.body.in_progress,
+                    saved_for_later: req.body.saved_for_later,
                 },
                 {
                     where: {
@@ -80,7 +83,10 @@ router.put('/:id', async (req, res) => {
         } else {
             const newStatus = await Status.create(
                 {
-                    ...req.body,
+                    starred: req.body.starred,
+                    completed: req.body.completed,
+                    in_progress: req.body.in_progress,
+                    saved_for_later: req.body.saved_for_later,
                     UserId: userData.id,
                     ProjectId: req.params.id,
                 }
